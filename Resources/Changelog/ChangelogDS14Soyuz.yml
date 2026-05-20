@@ -600,3 +600,20 @@ Entries:
   changes:
   - type: Tweak
     message: Отображение музыки в лобби
+- id: 61
+  author: PERed5
+  time: '2026-05-20T21:06:00.678888+00:00'
+  pr: 260
+  changes:
+  - type: Add
+    message: Бамбуковые ковры, стены, окна, двери
+  - type: Add
+    message: Торгомат почты
+  - type: Add
+    message: Система зарядки и урона у КПБ/С
+  - type: Add
+    message: Шахтёрский мех
+  - type: Tweak
+    message: Система двойных кроватей. Теперь это не костыль
+  - type: Tweak
+    message: Минорно изменены внутренности аркан и ксеноморфов
