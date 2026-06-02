@@ -708,3 +708,12 @@ Entries:
   changes:
   - type: Add
     message: 'Новые 4 шаттла пилота. Шаттлы маппили: KKT, Valera_023, Dododonch_'
+- id: 69
+  author: Genes1us
+  time: '2026-06-02T04:02:03.861180+00:00'
+  pr: 321
+  changes:
+  - type: Tweak
+    message: Вернул АЕК НМу в шкаф. КД прыжковых ботинок лаваленда теперь 1.5
+  - type: Fix
+    message: Спрайт шлема капитана на вульпах, кобольдах и унатхах.
