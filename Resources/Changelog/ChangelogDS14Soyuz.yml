@@ -831,3 +831,10 @@ Entries:
     message: Спрайты шлюзов шахтеров
   - type: Tweak
     message: Спрайты одежды Начальника Отдела Кадров
+- id: 81
+  author: PERed5
+  time: '2026-06-13T18:56:12.509724+00:00'
+  pr: 343
+  changes:
+  - type: Add
+    message: 9 игрушек плюшевых лис
