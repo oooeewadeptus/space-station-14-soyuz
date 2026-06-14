@@ -15,7 +15,7 @@ jobs:
 
     steps:
     - name: Install dependencies
-      run: sudo apt-get install -y python3-paramiko python3-lxml python3-requests python3-yaml
+      run: sudo apt-get install -y python3-paramiko python3-lxml python3-requests python3-yaml jq
 
     - uses: actions/checkout@v4.2.2
       with:
@@ -139,19 +139,20 @@ jobs:
         ENGINE_VER: ${{ steps.engine_version.outputs.version }}
         BUILD_SIZE: ${{ steps.build_size.outputs.size }}
       run: |
-        curl -H "Content-Type: application/json" \
-             -X POST \
-             -d '{
-              "username": "Обновления Союз-1 ☭",
-              "avatar_url": "https://github.com/PERed5/soyuz/blob/main/soyuz.png?raw=true",
-              "content": "'"$RANDOM_ANNOUNCE"'\n\n<:logo_UNION1:1282351621375791218>Сервер успешно обновлён!<:logo_UNION1:1282351621375791218>\n🥳Все последние изменения Союза ☭ в игре 🥳\n\n**📦 Информация о сборке:**\n• Версия движка: `'"$ENGINE_VER"`'\n• Размер сборки: `'"$BUILD_SIZE"`'",
-              "embeds": [{
-                "image": {
-                  "url": "https://media.discordapp.net/attachments/1303329439869833286/1390321152030806026/b6735b3e67e81887.gif"
-                }
-              }]
-              }' \
-              $DISCORD_WEBHOOK_URL
+        jq -n \
+          --arg announce "$RANDOM_ANNOUNCE" \
+          --arg engine "$ENGINE_VER" \
+          --arg size "$BUILD_SIZE" \
+          '{
+            username: "Обновления Союз-1 ☭",
+            avatar_url: "https://github.com/PERed5/soyuz/blob/main/soyuz.png?raw=true",
+            content: "\($announce)\n\n<:logo_UNION1:1282351621375791218>Сервер успешно обновлён!<:logo_UNION1:1282351621375791218>\n🥳Все последние изменения Союза ☭ в игре 🥳\n\n**📦 Информация о сборке:**\n• Версия движка: `\($engine)`\n• Размер сборки: `\($size)`",
+            embeds: [{
+              image: {
+                url: "https://media.discordapp.net/attachments/1303329439869833286/1390321152030806026/b6735b3e67e81887.gif"
+              }
+            }]
+          }' | curl -H "Content-Type: application/json" -X POST -d @- $DISCORD_WEBHOOK_URL
 
     - name: Send Discord Webhook Notification (DeadSpace Discord)
       if: success()
@@ -159,17 +160,16 @@ jobs:
         DISCORD_WEBHOOK_URL: ${{ secrets.CHANGELOG_DISCORD_WEBHOOK_DEADSPACE }}
         RANDOM_ANNOUNCE: ${{ steps.announce.outputs.announce }}
       run: |
-        curl -H "Content-Type: application/json" \
-              -X POST \
-              -d '{
-              "username": "Обновления Союз-1 ☭",
-              "avatar_url": "https://github.com/PERed5/soyuz/blob/main/soyuz.png?raw=true",
-              "content": "'"$RANDOM_ANNOUNCE"'\n\n<:logo_UNION1:1282351621375791218>Сервер успешно обновлён!<:logo_UNION1:1282351621375791218>\n🥳Все последние изменения Союза ☭ в игре 🥳\nА больше новых новостей разработки можно получать в дискорд сервере союза, ссылка в закрепах [чата союза](https://discord.com/channels/1030160796401016883/1487331042468565165)",
-              "embeds": [{
-                "image": {
-                  "url": "https://media.discordapp.net/attachments/1303329439869833286/1390321152030806026/b6735b3e67e81887.gif"
-                }
-              }]
-              }' \
-              $DISCORD_WEBHOOK_URL
+        jq -n \
+          --arg announce "$RANDOM_ANNOUNCE" \
+          '{
+            username: "Обновления Союз-1 ☭",
+            avatar_url: "https://github.com/PERed5/soyuz/blob/main/soyuz.png?raw=true",
+            content: "\($announce)\n\n<:logo_UNION1:1282351621375791218>Сервер успешно обновлён!<:logo_UNION1:1282351621375791218>\n🥳Все последние изменения Союза ☭ в игре 🥳\nА больше новых новостей разработки можно получать в дискорд сервере союза, ссылка в закрепах [чата союза](https://discord.com/channels/1030160796401016883/1487331042468565165)",
+            embeds: [{
+              image: {
+                url: "https://media.discordapp.net/attachments/1303329439869833286/1390321152030806026/b6735b3e67e81887.gif"
+              }
+            }]
+          }' | curl -H "Content-Type: application/json" -X POST -d @- $DISCORD_WEBHOOK_URL
 # DS14-Soyuz webhook end
