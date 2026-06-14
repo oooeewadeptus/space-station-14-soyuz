@@ -59,13 +59,29 @@ jobs:
         
         category = os.environ.get('INPUT_CATEGORY', 'all')
         embed_style = os.environ.get('INPUT_EMBED_STYLE', 'single')
+        color_scheme = os.environ.get('INPUT_COLOR_SCHEME', 'default')
         
-        colors = {
-            'completed': 0x00ff00,
-            'inprogress': 0xffa500,
-            'planned': 0x0099ff,
-            'default': 0x5865f2
-        }
+        if color_scheme == 'default':
+            colors = {
+                'completed': 0x00ff00,
+                'inprogress': 0xffa500,
+                'planned': 0x0099ff,
+                'default': 0x5865f2
+            }
+        elif color_scheme == 'dark':
+            colors = {
+                'completed': 0x2ecc71,
+                'inprogress': 0xe67e22,
+                'planned': 0x3498db,
+                'default': 0x2c3e50
+            }
+        elif color_scheme == 'light':
+            colors = {
+                'completed': 0x27ae60,
+                'inprogress': 0xf39c12,
+                'planned': 0x2980b9,
+                'default': 0x95a5a6
+            }
         
         filtered_entries = []
         for entry in entries:
@@ -204,6 +220,7 @@ jobs:
       env:
         INPUT_CATEGORY: ${{ github.event.inputs.category }}
         INPUT_EMBED_STYLE: ${{ github.event.inputs.embed_style }}
+        INPUT_COLOR_SCHEME: ${{ github.event.inputs.color_scheme }}
     
     - name: Send to Discord
       env:
@@ -255,4 +272,5 @@ jobs:
         echo "✅ Workflow завершен!"
         echo "📌 Категория: ${{ github.event.inputs.category }}"
         echo "🎨 Стиль: ${{ github.event.inputs.embed_style }}"
+        echo "🎨 Цветовая схема: ${{ github.event.inputs.color_scheme }}"
         echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
