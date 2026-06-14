@@ -51,7 +51,7 @@ jobs:
         from datetime import datetime
         
         try:
-            with open('Resources/Prototypes/roadmap.yml', 'r', encoding='utf-8') as f:
+            with open('Resources/Prototypes/_DeadSpace/_Soyuz/roadmap.yml', 'r', encoding='utf-8') as f:
                 entries = yaml.safe_load(f)
         except FileNotFoundError:
             print("❌ Файл roadmap.yml не найден!")
