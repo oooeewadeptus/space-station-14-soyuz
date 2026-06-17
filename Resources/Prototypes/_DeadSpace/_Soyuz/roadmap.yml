@@ -87,10 +87,3 @@
     - "QoL"
     - "интерфейс"
 
-- type: roadmapEntry
-  id: Roadmap10
-  title: "Тестовая запись"
-  description: "На проверку аккаунта"
-  category: Planned
-  tags:
-    - "Тест"
