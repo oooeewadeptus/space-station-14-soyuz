@@ -54,7 +54,7 @@
   id: Roadmap4
   title: "Новые предметы маппинга"
   description: "Добавить цветочную кудзу в спавн меню для маппинга, кудза не будет разростаться"
-  category: InProgress
+  category: Completed
   tags:
     - "Админское"
     - "Маппинг"
