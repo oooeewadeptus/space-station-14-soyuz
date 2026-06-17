@@ -16,6 +16,8 @@
           Piercing: 0.4
           Heat: 0.75
           Caustic: 0.75
+    - type: StaminaResistance
+      damageCoefficient: 0.55
 
 - type: entity
   parent: ClothingOuterCoatOKGB
