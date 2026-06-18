@@ -899,3 +899,10 @@ Entries:
   changes:
   - type: Add
     message: Импортирован режим "Предатели ультра"
+- id: 89
+  author: Genes1us
+  time: '2026-06-18T12:26:17.528022+00:00'
+  pr: 351
+  changes:
+  - type: Fix
+    message: КПБ теперь не разряжается спустя 5 секунд после зарядки
