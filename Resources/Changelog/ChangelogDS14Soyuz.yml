@@ -913,3 +913,12 @@ Entries:
   changes:
   - type: Fix
     message: Возможно спрайты печатей
+- id: 91
+  author: oooeewadeptus
+  time: '2026-06-27T05:34:15.642996+00:00'
+  pr: 359
+  changes:
+  - type: Add
+    message: Эмоция "Боевой клич" для всех органических рас
+  - type: Add
+    message: Упакованный продвинутый шахтёрмаг в лодаут мастера-шахтёра https://github.com/user-attachments/assets/5861fc47-ac0e-46ba-aeb5-b96acef78eda
